@@ -1,29 +1,38 @@
 ## Requirements
 
 ```bash
-nix shell nixpkgs#just github:pinpox/pgp2ssh github:serokell/deploy-rs
+nix shell nixpkgs#just nixpkgs#jq github:pinpox/pgp2ssh github:serokell/deploy-rs
 ```
 
-## Common
+## CLI Guide
 
+### General
+
+Start the common development environment:
 ```bash
 just dev
 ```
 
-## Update sing-box's config
+### Configuration Management
 
+Update the `sing-box` configurations:
 ```bash
 just update-configs
 ```
 
-## Rebuild System Configuration
+Convert a PEM certificate to a JSON-escaped string (useful for embedding in sing-box config):
+```bash
+jq -Rs '.' cert.crt
+```
 
+### System & Deployment
+
+Rebuild the local system configuration:
 ```bash
 just rebuild-sys
 ```
 
-## NixOS Server
-
+Deploy the configuration to the NixOS server:
 ```bash
 just deploy-server
 ```

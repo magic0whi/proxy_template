@@ -1,6 +1,6 @@
 {
 {{- if (and .isMobile .isLinux) }}
-  "certificate": {"certificate": ["-----BEGIN CERTIFICATE-----\nMIIC3zCCAmSgAwIBAgIUFgGncqhDCuR7p0KOt0ywHRbctMYwCgYIKoZIzj0EAwMw\ngaUxCzAJBgNVBAYTAkpQMRIwEAYDVQQIDAlUb3VreW91dG8xHDAaBgNVBAcME1Nl\ndGFnYXlha3UgS2l0YXphd2ExEzARBgNVBAoMCkhvbW8xMTQ1MTQxFTATBgNVBAsM\nDFlhanV1IFNhLWJhLTESMBAGA1UEAwwJSG9tbyBob21lMSQwIgYJKoZIhvcNAQkB\nFhVzdWRha3UyMzNAb3V0bG9vay5jb20wHhcNMjQwODAyMDY1MDI5WhcNMjYwODAy\nMDY1MDI5WjCBpTELMAkGA1UEBhMCSlAxEjAQBgNVBAgMCVRvdWt5b3V0bzEcMBoG\nA1UEBwwTU2V0YWdheWFrdSBLaXRhemF3YTETMBEGA1UECgwKSG9tbzExNDUxNDEV\nMBMGA1UECwwMWWFqdXUgU2EtYmEtMRIwEAYDVQQDDAlIb21vIGhvbWUxJDAiBgkq\nhkiG9w0BCQEWFXN1ZGFrdTIzM0BvdXRsb29rLmNvbTB2MBAGByqGSM49AgEGBSuB\nBAAiA2IABIW8GEkOL/d16jmwwL27XccJiz6kFYg24gLhBp/biTXJ2n3O0q78UAvo\nP3JKuzhRUOV5KklP4ArKiXaXcrhuviecocALPmoydvhBC0LiuIKxLiwzdNZC6KTe\nxzrcBvZDRaNTMFEwHQYDVR0OBBYEFOx1uAhVWTnDiOo0yLJI4hoN4r5lMB8GA1Ud\nIwQYMBaAFOx1uAhVWTnDiOo0yLJI4hoN4r5lMA8GA1UdEwEB/wQFMAMBAf8wCgYI\nKoZIzj0EAwMDaQAwZgIxANtUOrF1KHkEYWWq5fAvAXiamUAHbSSPIY2GwiepUNK5\nOO+oK6SBFNZueyweMKGs/QIxAO0VO+AUxvpcAtDG+urs/bvlRAFQV+s4q9pCaA8K\nZzuXjq+vrW/Cq0XmCxpO/UZHKw==\n-----END CERTIFICATE-----"]},
+  "certificate": {"certificate": ["-----BEGIN CERTIFICATE-----\nMIIC7jCCAnSgAwIBAgIUEjMXy/lbhuTC9yLfOtN2iZ7oM5wwCgYIKoZIzj0EAwMw\ngaUxCzAJBgNVBAYTAkpQMRIwEAYDVQQIDAlUb3VreW91dG8xHDAaBgNVBAcME1Nl\ndGFnYXlha3UgS2l0YXphd2ExEzARBgNVBAoMCkhvbW8xMTQ1MTQxFTATBgNVBAsM\nDFlhanV1IFNhLWJhLTESMBAGA1UEAwwJSG9tbyBob21lMSQwIgYJKoZIhvcNAQkB\nFhVzdWRha3UyMzNAb3V0bG9vay5jb20wHhcNMjYwNTAzMTMyNDE1WhcNMjgwNTAy\nMTMyNDE1WjCBpTELMAkGA1UEBhMCSlAxEjAQBgNVBAgMCVRvdWt5b3V0bzEcMBoG\nA1UEBwwTU2V0YWdheWFrdSBLaXRhemF3YTETMBEGA1UECgwKSG9tbzExNDUxNDEV\nMBMGA1UECwwMWWFqdXUgU2EtYmEtMRIwEAYDVQQDDAlIb21vIGhvbWUxJDAiBgkq\nhkiG9w0BCQEWFXN1ZGFrdTIzM0BvdXRsb29rLmNvbTB2MBAGByqGSM49AgEGBSuB\nBAAiA2IABAb4KYO2HBynuHQodCCXZBoK4Vy/eJW0+GlIvcDR3pcDWtJwepTvl7Bp\nDJzrffiiRp1swxC9Loao75fXDfShDf3MPXaK50/pW+KrE46HzFauFRjrPByw1+3n\nDgK6RCZwNKNjMGEwHQYDVR0OBBYEFDyROW0qqJLQDtIVpjaUQD/jS1vuMB8GA1Ud\nIwQYMBaAFDyROW0qqJLQDtIVpjaUQD/jS1vuMA8GA1UdEwEB/wQFMAMBAf8wDgYD\nVR0PAQH/BAQDAgEGMAoGCCqGSM49BAMDA2gAMGUCMQCK4EvcgOnugBH/WHpEYxrt\n1k6qOYQl6IxN108K4suendPNYmQmGIu0P77YIoX7c1UCMBBT1xUlRAObwD5G18SJ\n0e4hieC+HT/GoT8S/US92lma0lA0qlRRsZgQ3kahPxe/Mg==\n-----END CERTIFICATE-----\n" ]},
 {{- end }}
   "log": {"level": "debug", "timestamp": false},
   "experimental": {
@@ -261,13 +261,9 @@
       "tag": "Default",
       "type": "selector",
       "outbounds": [
-        "Auto",
-        "Direct",
+        "Auto", "Direct",
         "Socks5",
-{{- range $i := untilStep 0 6 1 }}
-        "Proteus-NixOS-{{ $i }}",
-{{- end }}
-        "{all}"
+        "Germany", "HongKong", "UnitedKingdom", "UnitedStates", "Others"
       ],
       "default": "Auto"
     },
@@ -573,338 +569,242 @@
     ],
     "rule_set": [
       {
-        "tag": "geosite-github",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-github", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/github.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-apple-intelligence",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-apple-intelligence", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple-intelligence.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-bing",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-bing", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bing.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-openai",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-openai", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/openai.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-anthropic",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-anthropic", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/anthropic.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-perplexity",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-perplexity", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/perplexity.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-xai",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-xai", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/xai.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-google-gemini",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-google-gemini", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google-gemini.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geoip-apple",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geoip-apple", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/apple.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-apple",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-apple", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geoip-google",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geoip-google", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-google",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-google", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-youtube",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-youtube", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geoip-facebook",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geoip-facebook", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/facebook.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-meta",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-meta", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/meta.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geoip-bilibili",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geoip-bilibili", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/bilibili.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-bilibili",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-bilibili", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bilibili.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-microsoft",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-microsoft", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-category-games",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-category-games", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-games.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-category-game-platforms-download",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-category-game-platforms-download", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-game-platforms-download.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-tailscale",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-tailscale", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/tailscale.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-bybit",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-bybit", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bybit.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-okx",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-okx", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/okx.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-n26",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-n26", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/n26.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-kraken",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-kraken", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/kraken.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-paypal",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-paypal", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/paypal.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-wise",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-wise", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/wise.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-stripe",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-stripe", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/stripe.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geoip-cn",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geoip-cn", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-cn",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-cn", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-boc",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-boc", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/boc.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-ccb",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-ccb", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/ccb.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-hsbc",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-hsbc", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/hsbc.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-icbc",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-icbc", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/icbc.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-ifast",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-ifast", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/ifast.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-alibaba@!cn",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-alibaba@!cn", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/alibaba@!cn.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-line",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-line", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/line.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-hketgroup",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-hketgroup", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/hketgroup.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-oracle",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-oracle", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/oracle.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-ibkr",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-ibkr", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/ibkr.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geoip-ibkr-as9096",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geoip-ibkr-as9096", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/asn/AS9096.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geoip-ibkr-as9468",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geoip-ibkr-as9468", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/asn/AS9468.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geoip-ibkr-as27163",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geoip-ibkr-as27163", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/asn/AS27163.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geoip-ibkr-as40711",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geoip-ibkr-as40711", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/asn/AS40711.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-schwab",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-schwab", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/schwab.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-pixiv",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-pixiv", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/pixiv.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-tencent",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-tencent", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/tencent.srs",
         "download_detour": "Auto"
       },
       {
-        "tag": "geosite-category-speedtest",
-        "type": "remote",
-        "format": "binary",
+        "tag": "geosite-category-speedtest", "type": "remote", "format": "binary",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-speedtest.srs",
         "download_detour": "Auto"
       }

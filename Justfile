@@ -1,9 +1,9 @@
 os_name := os()
 
 repo_home := justfile_directory()
-sub_home := `zoxide query sing-box-subscribe || echo "~/sync_work/sing-box-subscribe"`
+sub_home := `zoxide query sing-box-subscribe || echo "~/Works/Reference/sing-box-subscribe"`
 
-nixos_configs_home := `zoxide query nixos_configs_flake || echo "~/nixos_configs_flake"`
+nixos_configs_home := `zoxide query nixos_configs_flake || echo "~/Works/nixos_configs_flake"`
 nixos_configs_secrets := nixos_configs_home + "/secrets"
 pgp_key_id := "30973F79B17F9ED3!"
 
@@ -89,12 +89,20 @@ rebuild-sys nixos_recipe="proteus-nuc":
   pushd "$SECRETS" > /dev/null
 
   rm -f sb_client_darwin.json.age
-  cat "$SUB/darwin.json" | agenix -e sb_client_darwin.json.age -i <(printf "%s\n" "$SSH_KEY")
+  # cat "$SUB/darwin.json" | agenix -e sb_client_darwin.json.age -i <(printf "%s\n" "$SSH_KEY")
 
   rm -f sb_client_linux.json.age
-  cat "$SUB/linux.json" | agenix -e sb_client_linux.json.age -i <(printf "%s\n" "$SSH_KEY")
+  # cat "$SUB/linux.json" | agenix -e sb_client_linux.json.age -i <(printf "%s\n" "$SSH_KEY")
 
   pushd "$NIXOS_HOME" > /dev/null
+  echo $NIXOS_HOME $SUB/darwin.json
+  cat "$SUB/darwin.json" | sops encrypt \
+    --filename-override secrets/sb_client_darwin.json.sops \
+    --output secrets/sb_client_darwin\.json\.sops
+  cat "$SUB/linux.json" | sops encrypt \
+    --filename-override secrets/sb_client_linux.json.sops \
+    --output secrets/sb_client_linux.json.sops
+
   if [ "{{os_name}}" = "macos" ]; then
     just proteus-mbp
     sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder
