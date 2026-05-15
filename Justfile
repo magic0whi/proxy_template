@@ -83,7 +83,7 @@ rebuild-sys nixos_recipe="proteus-nuc":
   SUB="{{sub_home}}"
   SECRETS="{{nixos_configs_secrets}}"
   NIXOS_HOME="{{nixos_configs_home}}"
-  SSH_KEY=$(just get-ssh-key)
+  # SSH_KEY=$(just get-ssh-key)
 
   echo "Rebuilding system configuration..."
   pushd "$SECRETS" > /dev/null
@@ -127,7 +127,7 @@ deploy-server:
   REPO="{{repo_home}}"
   NIXOS_HOME="{{nixos_configs_home}}"
   SECRETS="{{nixos_configs_secrets}}"
-  SSH_KEY=$(just get-ssh-key)
+  # SSH_KEY=$(just get-ssh-key)
 
   echo "Deploying to NixOS Server..."
   pushd "$REPO" > /dev/null
