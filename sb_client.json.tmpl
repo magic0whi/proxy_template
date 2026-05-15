@@ -38,12 +38,13 @@
         "inet4_range": "198.18.0.0/15",
         "inet6_range": "fc00::/18"
       },
+      {"tag": "bootstrap", "type": "udp", "server": "119.29.29.29"},
       {"tag": "proxy", "type": "tls", "server": "8.8.8.8", "detour": "Default"},
       {"tag": "de", "type": "tls", "server": "8.8.8.8", "detour": "Germany"},
       {"tag": "hk", "type": "tls", "server": "8.8.8.8", "detour": "HongKong"},
       {"tag": "gb", "type": "tls", "server": "8.8.8.8", "detour": "UnitedKingdom"},
       {"tag": "us", "type": "tls", "server": "8.8.8.8", "detour": "UnitedStates"},
-      {"tag": "china", "type": "quic", "server": "223.5.5.5"},
+      {"tag": "china", "type": "tls", "server": "dot.pub", "domain_resolver": "bootstrap"},
       {"tag": "vowifi", "type": "tls", "server": "8.8.8.8", "detour": "VoWiFi"},
       {"tag": "paypal", "type": "tls", "server": "8.8.8.8", "detour": "PayPal"},
       {"tag": "hsbc", "type": "tls", "server": "8.8.8.8", "detour": "HSBC"},
@@ -61,7 +62,7 @@
       {"tag": "microsoft", "type": "tls", "server": "8.8.8.8", "detour": "Microsoft"},
       {"tag": "oracle", "type": "tls", "server": "8.8.8.8", "detour": "Oracle"},
       {"tag": "pixiv", "type": "tls", "server": "8.8.8.8", "detour": "Pixiv"},
-      {"tag": "category-speedtest", "type": "tls", "server": "223.5.5.5", "detour": "Category-Speedtest"}
+      {"tag": "category-speedtest", "type": "tls", "server": "dot.pub", "domain_resolver": "bootstrap", "detour": "Category-Speedtest"}
     ],
     "rules": [
 {{- if (or .isMobile .isDarwin) }}
@@ -88,7 +89,7 @@
       },
       {"server": "china", "domain_suffix": ["stun.miwifi.com", "stun.chat.bilibili.com", "public.easytier.cn"]},
       {"server": "china", "rule_set": "geosite-tailscale"},
-      {"server": "fakeip", "strategy": "ipv4_only", "query_type": ["A", "AAAA"]},
+      {"server": "fakeip", "query_type": ["A", "AAAA"]},
       {"server": "china", "clash_mode": "direct"},
       {"server": "default", "clash_mode": "global"},
       {
