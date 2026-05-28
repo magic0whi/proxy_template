@@ -427,7 +427,6 @@
 {{- if .isMobile }}
       {"outbound": "Tailscale", "ip_cidr": ["100.64.0.0/10", "fd7a:115c:a1e0::/48"]},
 {{- end }}
-      {"outbound": "Direct", "port": 22},
       {
         "outbound": "Direct",
         "ip_cidr": [
@@ -584,7 +583,8 @@
           "geoip-cn",
           "geosite-cn"
         ]
-      }
+      },
+      {"outbound": "Direct", "port": 22}
     ],
     "rule_set": [
       {
