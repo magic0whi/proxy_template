@@ -69,7 +69,7 @@
       {"server": "ts-ns", "domain_suffix": "proteus.eu.org"},
 {{- end }}
 {{- if .isMobile }}
-      {"server": "ts", "ip_accept_any": true},
+      {"server": "ts", "domain_suffix": ["ts.net", "100.in-addr.arpa", "0.e.1.a.c.5.1.1.a.7.d.f.ip6.arpa"]},
 {{- end }}
       {
         "server": "china",
@@ -208,7 +208,13 @@
     "final": "proxy"
   },
 {{- if .isMobile }}
-  "endpoints": [{"tag": "Tailscale", "type": "tailscale", "auth_key": "{{ keepassxcAttribute "sing-box" "tailscale_auth_key" }}"}],
+  "endpoints": [{
+    "tag": "Tailscale",
+    "type": "tailscale",
+    "auth_key": "{{ keepassxcAttribute "sing-box" "tailscale_auth_key" }}",
+    "accept_routes": true,
+    "system_interface": true
+  }],
 {{- end }}
   "inbounds": [
     {
@@ -223,11 +229,14 @@
 {{- if .isLinux }}
       "auto_redirect": true,
 {{- end }}
-      "strict_route": true,
+      "strict_route": false,
       "platform": {"http_proxy": {"enabled": false, "server": "127.0.0.1", "server_port": 2080}},
+{{- if (not .isMobile) }}
       "route_exclude_address": [
-        "172.18.0.0/16"
+        "100.64.0.0/10", "fd7a:115c:a1e0::/48",
+        "10.0.0.0/24", "fdfe:dcba:9877::/64"
       ]
+{{- end }}
     },
     {"tag": "mixed-in", "type": "mixed", "listen": "127.0.0.1", "listen_port": 2080}
   ],
@@ -422,6 +431,7 @@
       },
       {"outbound": "Direct", "process_path_regex": [".*snowflake.*", ".*tailscaled.*"]},
 {{- if .isMobile }}
+      {"outbound": "Tailscale", "domain_suffix": ["ts.net", "100.in-addr.arpa", "0.e.1.a.c.5.1.1.a.7.d.f.ip6.arpa"]},
       {"outbound": "Tailscale", "ip_cidr": ["100.64.0.0/10", "fd7a:115c:a1e0::/48"]},
 {{- end }}
       {
