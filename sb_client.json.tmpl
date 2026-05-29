@@ -220,17 +220,17 @@
     {
       "tag": "tun-in",
       "type": "tun",
-{{- if (not .isDarwin) }}
-      "interface_name": "sing0",
-{{- end }}
       "address": ["172.19.0.1/30", "fdfe:dcba:9876::1/126"],
       "stack": "gvisor",
       "auto_route": true,
+      "strict_route": false,
+      "platform": {"http_proxy": {"enabled": false, "server": "127.0.0.1", "server_port": 2080}},
+{{- if (not .isDarwin) }}
+      "interface_name": "sing0",
+{{- end }}
 {{- if .isLinux }}
       "auto_redirect": true,
 {{- end }}
-      "strict_route": false,
-      "platform": {"http_proxy": {"enabled": false, "server": "127.0.0.1", "server_port": 2080}},
 {{- if (not .isMobile) }}
       "route_exclude_address": [
         "100.64.0.0/10", "fd7a:115c:a1e0::/48",
