@@ -15,24 +15,6 @@ default:
 dev:
   nix develop github:magic0whi/dev_flake#python -c zsh
 
-# Helper: Generate SSH key from PGP secret subkey
-[private]
-get-ssh-key key_id=pgp_key_id:
-  #!/usr/bin/env bash
-  set -eufo pipefail
-
-  TMP_KEY=$(mktemp)
-  # Ensure the temp file is securely deleted when the script finishes or crashes
-  trap 'rm -f "$TMP_KEY"' EXIT
-
-  # Export the key directly to the temp file
-  gpg --quiet --batch --yes -ao "$TMP_KEY" --export-secret-subkeys "{{key_id}}"
-
-  # Pass the file path, a newline, and the index '1' into pgp2ssh
-  printf "%s\n1\n" "$TMP_KEY" \
-    | pgp2ssh 2>&1 \
-    | awk 'BEGIN { A=0; } /BEGIN OPENSSH PRIVATE KEY/ { A=1; } { if (A==1) { print; } }'
-
 # Update sing-box configurations
 update-configs:
   #!/usr/bin/env bash
@@ -83,16 +65,13 @@ rebuild-sys nixos_recipe="proteus-nuc":
   SUB="{{sub_home}}"
   SECRETS="{{nixos_configs_secrets}}"
   NIXOS_HOME="{{nixos_configs_home}}"
-  # SSH_KEY=$(just get-ssh-key)
 
   echo "Rebuilding system configuration..."
   pushd "$SECRETS" > /dev/null
 
   rm -f sb_client_darwin.json.age
-  # cat "$SUB/darwin.json" | agenix -e sb_client_darwin.json.age -i <(printf "%s\n" "$SSH_KEY")
 
   rm -f sb_client_linux.json.age
-  # cat "$SUB/linux.json" | agenix -e sb_client_linux.json.age -i <(printf "%s\n" "$SSH_KEY")
 
   pushd "$NIXOS_HOME" > /dev/null
   echo $NIXOS_HOME $SUB/darwin.json
@@ -127,7 +106,6 @@ deploy-server:
   REPO="{{repo_home}}"
   NIXOS_HOME="{{nixos_configs_home}}"
   SECRETS="{{nixos_configs_secrets}}"
-  # SSH_KEY=$(just get-ssh-key)
 
   echo "Deploying to NixOS Server..."
   pushd "$REPO" > /dev/null
