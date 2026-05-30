@@ -20,7 +20,7 @@
       {
         "tag": "ts-ns",
         "type": "tls",
-        "server": "100.64.161.20",
+        "server": "100.89.227.22",
         "tls": {"server_name": "ns1.proteus.eu.org"},
   {{- if .isMobile }}
         "detour": "Tailscale"
@@ -212,8 +212,7 @@
     "tag": "Tailscale",
     "type": "tailscale",
     "auth_key": "{{ keepassxcAttribute "sing-box" "tailscale_auth_key" }}",
-    "accept_routes": true,
-    "system_interface": true
+    "accept_routes": true
   }],
 {{- end }}
   "inbounds": [
@@ -224,7 +223,6 @@
       "stack": "gvisor",
       "auto_route": true,
       "strict_route": false,
-      "platform": {"http_proxy": {"enabled": false, "server": "127.0.0.1", "server_port": 2080}},
 {{- if (not .isDarwin) }}
       "interface_name": "sing0",
 {{- end }}
@@ -235,8 +233,9 @@
       "route_exclude_address": [
         "100.64.0.0/10", "fd7a:115c:a1e0::/48",
         "10.0.0.0/24", "fdfe:dcba:9877::/64"
-      ]
+      ],
 {{- end }}
+      "platform": {"http_proxy": {"enabled": false, "server": "127.0.0.1", "server_port": 2080}}
     },
     {"tag": "mixed-in", "type": "mixed", "listen": "127.0.0.1", "listen_port": 2080}
   ],
